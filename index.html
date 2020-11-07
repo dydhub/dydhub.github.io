@@ -170,18 +170,14 @@
       <!-- ============================ Hero Image =========================== -->
 <script>
     var imgs = new Array();
-    imgs[0] = 'https://cn.bing.com//th?id=OHR.TwoWest_ZH-CN9396182448_1920x1080.jpg&rf=LaDigue_1920x1080.jpg';
-    imgs[1] = '/img/bg_img.jpg';
+    imgs[0] = 'https://cn.bing.com//th?id=OHR.TwoWest_ZH-CN9396182448_1920x1080.jpg';
+    imgs[1] = 'http://cn.bing.com/th?id=OHR.TwoWest_ROW0374523139_1920x1080.jpg';
 
     i = Math.random() * imgs.length;
     i = Math.floor(i);
 
     var img_url = imgs[i];
 
-        $.get("http://guolin.tech/api/bing_pic",function(result){
-            console.log(result);
-
-        },'jsonp');        
 </script>
 <section id="hero" class="scrollme">
     <!--div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">-->
