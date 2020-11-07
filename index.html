@@ -177,7 +177,11 @@
     i = Math.floor(i);
 
     var img_url = imgs[i];
-     
+
+        $.get("http://guolin.tech/api/bing_pic",function(result){
+            console.log(result);
+
+        },'jsonp');        
 </script>
 <section id="hero" class="scrollme">
     <!--div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">-->
