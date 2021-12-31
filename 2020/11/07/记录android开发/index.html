@@ -182,9 +182,7 @@
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">title:Android中进程间通信（IPC）方式总结</span><br></pre></td></tr></table></figure>
-
-<h2 id="Android中进程间通信（IPC）方式总结"><a href="#Android中进程间通信（IPC）方式总结" class="headerlink" title="Android中进程间通信（IPC）方式总结"></a>Android中进程间通信（IPC）方式总结</h2><p>[TOC]</p>
+      		<h1 id="Android中进程间通信（IPC）方式总结"><a href="#Android中进程间通信（IPC）方式总结" class="headerlink" title="Android中进程间通信（IPC）方式总结"></a>Android中进程间通信（IPC）方式总结</h1><p>[TOC]</p>
 <p><img src="D:\xunlei\65f41806fa9.jpg"></p>
 <p><strong>IPC为进程间通信或跨进程通信，是指两个进程进行进程间通信的过程。</strong>在PC和移动设备上一个进程指的是一个程序或者一个应用，所以我们可以将进程间通信简单的理解为：<strong>不同应用之间的通信，</strong>当然这种说法并不严谨。</p>
 <p>在Android中，为每一个应用程序都分配了一个独立的虚拟机，或者说每个进程都分配一个独立的虚拟机，不同虚拟机在内存分配上都有不同的地址空间，这就导致在不同的虚拟机互相访问数据需要借助其他手段。<strong>下面分别介绍一下在Android中实现IPC的方式：</strong></p>
