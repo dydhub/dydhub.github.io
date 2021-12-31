@@ -182,7 +182,8 @@
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h1 id="Android-动态调试app"><a href="#Android-动态调试app" class="headerlink" title="Android 动态调试app"></a>Android 动态调试app</h1><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近研究Xposed,自然而然需要研究一下动态调试技术,特将实验通过的方法记录如下:</p>
+      		<h1 id="Android-动态调试app"><a href="#Android-动态调试app" class="headerlink" title="Android 动态调试app"></a>Android 动态调试app</h1><p>[TOC]</p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近研究Xposed,自然而然需要研究一下动态调试技术,特将实验通过的方法记录如下:</p>
 <h3 id="准备步骤"><a href="#准备步骤" class="headerlink" title="准备步骤"></a>准备步骤</h3><p>一部<code>ROOT</code>过的<code>Android</code>手机,打开开发者模式<br>安装<code>Xposed</code>(安装后需要授权ROOT)<br>安装<code>Xposed</code>插件<code>XDebuggable</code>或<code>BDOpener</code>(这个Xposed搜索不到需要点击<a target="_blank" rel="noopener" href="https://security.tencent.com/index.php/opensource/detail/17">[这里]</a>下载),并激活。<br>下载<code>IntelliJ IDEA</code>,并激活（激活问题请自行百度或参照Pycharm篇）<br>安装<code>smalidea</code>插件。点击<a target="_blank" rel="noopener" href="https://github.com/JesusFreke/smalidea">这里</a>了解如何安装。</p>
 <h3 id="反编译APK-apktool"><a href="#反编译APK-apktool" class="headerlink" title="反编译APK(apktool)"></a>反编译APK(apktool)</h3><p>点击<a target="_blank" rel="noopener" href="https://ibotpeaches.github.io/Apktool/">这里</a>下载最新的<code>apktool</code>。并设置到terminal的配置中(mac与Win不尽相同,更详细的操作参见<a target="_blank" rel="noopener" href="https://ibotpeaches.github.io/Apktool/install/">官方文档</a>)</p>
 <p>下载要反编译的.apk文件后,执行</p>
