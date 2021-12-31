@@ -173,8 +173,8 @@
         <div class="row col-md-offset-2">
             <div class="col-md-8">
     			<span class="post-meta">
-      <time datetime="2020-12-04T02:48:08.363Z" itemprop="datePublished">
-          2020-12-04
+      <time datetime="2021-01-12T00:58:55.233Z" itemprop="datePublished">
+          2021-01-12
       </time>
     
 </span>
@@ -182,47 +182,61 @@
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h2 id="谈谈Android-开发中的AOP技术"><a href="#谈谈Android-开发中的AOP技术" class="headerlink" title="谈谈Android 开发中的AOP技术"></a>谈谈Android 开发中的AOP技术</h2><p>转自<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c40528c8df17">https://www.jianshu.com/p/c40528c8df17</a></p>
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Aop 的中文解释是面向切面编程,是一种编程范式.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">面向过程编程，面向对象编程，函数式编程，事件驱动编程等这些都是属于编程范式．</span><br></pre></td></tr></table></figure>
+      		<h1 id="记录vs2019编译openssl1-1-1i-tar-zip"><a href="#记录vs2019编译openssl1-1-1i-tar-zip" class="headerlink" title="记录vs2019编译openssl1.1.1i.tar.zip"></a>记录vs2019编译openssl1.1.1i.tar.zip</h1><h2 id="一、准备工作（附件会提供所有）"><a href="#一、准备工作（附件会提供所有）" class="headerlink" title="一、准备工作（附件会提供所有）"></a>一、准备工作（附件会提供所有）</h2><p>1.下载VS2019并安装（<strong>注：建议更改目录以后，手动添加环境变量，不然各种莫名其妙问题</strong>）</p>
+<p>2.下载Activeperl并安装，本文用的ActivePerl-5.26.0.2600-MSWin32-x86-64int-403866，主要是想编译32位程序，再有就是官网提供的好像只有最新的64位（<strong>注：建议默认路径，不会有稀奇古怪的问题</strong>）</p>
+<p>下载链接：<a target="_blank" rel="noopener" href="https://www.activestate.com/activeperl/downloads">https://www.activestate.com/activeperl/downloads</a></p>
+<p>3.下载OpenSSL,本文用的是openssl-1.1.1i.tar.gz</p>
+<p>下载链接：<a target="_blank" rel="noopener" href="https://www.openssl.org/source/">https://www.openssl.org/source/</a></p>
+<p>附上别人编译好的exe链接：<a target="_blank" rel="noopener" href="http://slproweb.com/products/Win32OpenSSL.html">http://slproweb.com/products/Win32OpenSSL.html</a></p>
+<p>4.下载NASM，本文用的nasm-2.13.01-installer-x64.exe（非必须使用项，可以编译时通过参数屏蔽，<strong>注：这个也建议默认安装路径，不然会出一些稀奇古怪的问题，建议手动添加上环境变量</strong>）</p>
+<p>下载链接：<a target="_blank" rel="noopener" href="http://www.nasm.us/pub/nasm/releasebuilds/?C=M;O=D">http://www.nasm.us/pub/nasm/releasebuilds/?C=M;O=D</a></p>
+<h2 id="二、注意事项"><a href="#二、注意事项" class="headerlink" title="二、注意事项"></a>二、注意事项</h2><p>注：所有安装完以后，手动添加完环境变量以后友情提醒：<strong>重启！重启！重启！说的就是windows10</strong>，不重启会发现一些莫名的问题，如果没有报找不到dmake.exe,不需要安装dmake,也不需要加这个路径；<strong>每编译一次</strong>，建议将源码压缩包解压一次，用新解压的包进行编译，如果不用新解压的，好像也会出现莫名其妙的问题，例如LNK错误。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200804185416982.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NDE1NjE1,size_16,color_FFFFFF,t_70" alt="img"></p>
+<h2 id="三：具体步骤："><a href="#三：具体步骤：" class="headerlink" title="三：具体步骤："></a>三：具体步骤：</h2><p>1.编译工具（主要还是使用VC编译）</p>
+<p>开始=》菜单找到VS2017文件夹中的命令行，因为博主要编译32位的，所以选择32位的，顺带提一下，我安装的VS2017貌似没有“适用于 VS 2017 的 x86 本机工具命令提示符”那就选用如下图的命令提示符吧，<strong>注：一定要用管理员身份运行，不然有的问题不报错</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20200804190252557.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NDE1NjE1,size_16,color_FFFFFF,t_70" alt="img"></p>
+<p>2.编译主要OpenSSL命令（参考：好像是源码里有步骤，忘了）：</p>
+<p>1）nmake：编译</p>
+<p>（2）nmake test：执行自带的例子，如果通过最终会有一个pass</p>
+<p>（3）nmake install：生成编译结果</p>
+<p>3.具体执行：</p>
+<p>（1）需要几个文件夹，OpenSSL源码解压路径（本文：E:\OpenSSL\OpenSSL），生成OpenSSL编译结果路径（本文：E:\OpenSSL）</p>
+<p><img src="https://img-blog.csdnimg.cn/20200804191841222.png" alt="img"></p>
+<p>（2）从上边说的打开的32位的VS2019命令框，因为要编译32位的动态库，将其目录切换到OpenSSL解压路径：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200804192252777.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NDE1NjE1,size_16,color_FFFFFF,t_70" alt="img"></p>
+<p>（3）配置参数（编译32位debug动态库，将生成结果生成到E:\OpenSSL路径）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">perl Configure debug-VC-WIN32 --prefix=E:\OpenSSL    :编译debug版本，不设置这个参数，默认编译release版本</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">（或者这个：perl Configure VC-WIN32 no-<span class="keyword">asm</span> --prefix=E:\OpenSSL  :这个就是上边说的NASM是非必安装项，通过参数屏蔽）</span><br></pre></td></tr></table></figure>
 
-<h3 id="oop与aop的区别"><a href="#oop与aop的区别" class="headerlink" title="oop与aop的区别"></a>oop与aop的区别</h3><p>oop(面向对象编程)针对业务处理过程中的实体机器属性和行为进行抽象封装,以获得更加清晰高效的逻辑单元划分.</p>
-<p>aop(面向切面编程)则是针对业务处理过程中的切面进行提取,它所面对的是处理过程中的某个步骤，以获得逻辑过程中各部分之间低耦合性的隔离效果．aop解决的是特定问题,而不是解决所有问题.(也就是说它和oop不是竞争关系,而是互补的关系)</p>
-<p>我们在软件开发时经常提到一个词叫做业务逻辑,我们的代码主要就是实现某种特定的业务逻辑.但是我们往往不能专注于业务逻辑,比如我们写代码逻辑功能的同时,还要写埋点,日志等等通用化的功能,而且每个业务功能都要和这些业务功能混在一起,不仅开发起来不舒服,而且还会增加代码的复杂度.传统的面向对象中,每个单元就是一个类,而类似于埋点方面的问题,它们通常不能在一个类中处理,因为它们横跨多个类,这就导致了代码无法重用,可维护性差而且产生了大量代码冗余,这就是我们不想看到的.</p>
-<p>总的来说,aop的出现是为了将业务性需求和功能性需求分离开来,并将这些功能集中起来,放到一个统一的地方来统一管理和控制.</p>
-<h3 id="aop术语"><a href="#aop术语" class="headerlink" title="aop术语"></a>aop术语</h3><h4 id="连接点-joinpoint"><a href="#连接点-joinpoint" class="headerlink" title="连接点(joinpoint)"></a>连接点(joinpoint)</h4><p>程序执行的某个特定位置:如类开始初始化前,类初始化后,类某个方法调用前/调用后/方法异常后.一个类或一段程序代码拥有一些具有边界性质的特定点,这些点中的特定点就称为’连接点’.连接点有两个信息确定:第一是用方法标识的程序执行点;第二是用相对点表示具体的方位.</p>
-<h4 id="切点-Pointcut"><a href="#切点-Pointcut" class="headerlink" title="切点(Pointcut)"></a>切点(Pointcut)</h4><p>每个程序类都拥有多个连接点,如一个拥有两个方法的类,这两个方法都是连接点,即连接点是程序类中客观存在的事物.AOP通过”切点”定位特定的连接点.连接点相当于数据库中的记录,而切点相当于查询条件.切点和连接点不是一对一的关系,一个切点可以匹配多个连接点.</p>
-<h4 id="增强-Advice"><a href="#增强-Advice" class="headerlink" title="增强(Advice)"></a>增强(Advice)</h4><p>增强是植入到目标类连接点上的一段程序代码</p>
-<h4 id="目标对象-Target"><a href="#目标对象-Target" class="headerlink" title="目标对象(Target)"></a>目标对象(Target)</h4><p>被植入增强逻辑的类.如果没有AOP,目标业务类需要自己实现所有逻辑,而在AOP的帮助下,目标业务类只实现哪些非横切逻辑的程序逻辑,如性能监视和事物管理等这些横切逻辑则可以使用AOP动态的植入到特定的连接点上.</p>
-<h4 id="织入-Weaving"><a href="#织入-Weaving" class="headerlink" title="织入(Weaving)"></a>织入(Weaving)</h4><p>织入是将增强添加到目标类具体连接点上的过程.AOP像一台织布机,将目标类/增强或引介通过AOP这台织布机天衣无缝的编织到一起.根据不同的实现技术,AOP有三种织入的方式:</p>
-<p>a.编译期织入,这要求使用特殊的java编译器</p>
-<p>b.类装载器织入,这要求使用特殊的类装载器</p>
-<p>c.动态代理织入,在运行期为目标类添加增强生成子类的方式</p>
-<p>Spring 采用动态代理织入,而AspectJ采用编译器织入和类装载器织入</p>
-<h4 id="代理-Proxy"><a href="#代理-Proxy" class="headerlink" title="代理(Proxy)"></a>代理(Proxy)</h4><p>一个类被AOP织入增强后,就产生一个结果类,他是融合了原类和增强逻辑的代理类.根据不同的代理方式,代理类既可能是和原类具有相同接口的类,也可能就是原类的子类,所以我们可以采用调用原类的相同的方式调用代理类</p>
-<h4 id="切面-Aspect"><a href="#切面-Aspect" class="headerlink" title="切面(Aspect)"></a>切面(Aspect)</h4><p>切面由切点和增强(引介)组成,它既包括了横切逻辑的定义,也包括了连接点的定义,切面可以看做是一个切点的管理中心</p>
-<h3 id="常用AOP的实现方式"><a href="#常用AOP的实现方式" class="headerlink" title="常用AOP的实现方式"></a>常用AOP的实现方式</h3><p>AOP是一种编程范式,实现AOP需要一些技术手段,一般就是采用一些注入代码的方式,关键是从什么时候注入代码,根据Android编译执行流程来看,不同的时期都可以注入代码:</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/10992781-6fa2827d2a2dc8d2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt="img"></p>
-<h4 id="APT"><a href="#APT" class="headerlink" title="APT"></a>APT</h4><p>apt(annotation processing tool)即注解处理器,是一种处理注解的工具,确切的说它是javac的一个工具,它用来在编译时扫描和处理注解.注解处理器以java代码(或者编译过的字节码)作为输入,生成.java文件作为输出.简单来说就是在编译期,通过注解生成.java文件.使用的annotation类型是SOURCE.</p>
-<p>代表框架:DataBinding, Dagger2, ButterKnife, EventBus3, DBFlow , AndroidAnnotation</p>
-<p>特点:</p>
-<p>1.只能生成.java文件,而不能在现有的类中插入代码</p>
-<p>2.可以通过javapoet来简化.java的生成操作</p>
-<p>3.会在运行时产生一些代理类的缓存,增加了内存的负担,所以在选择这些框架的时候要根据自己的实际项目谨慎选择</p>
-<h4 id="AspectJ"><a href="#AspectJ" class="headerlink" title="AspectJ"></a>AspectJ</h4><p>AspectJ是一个代码生成框架,扩展了Java语言,定义了AOP语法,所以他有一个专用的编译器来生成遵守java字节编码规范的Class文件</p>
-<p>未完待续…</p>
+<p>执行以后会发现和网上编译1.1.0版本显示的不一样，当时我也懵了半天</p>
+<p><img src="https://img-blog.csdnimg.cn/2020080419313812.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NDE1NjE1,size_16,color_FFFFFF,t_70" alt="img"></p>
+<p>（4）然后执行nmake，等待编译完成，有可能某个文件会编译很久，需要等待</p>
+<p><img src="https://img-blog.csdnimg.cn/20200804193320912.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NDE1NjE1,size_16,color_FFFFFF,t_70" alt="img"></p>
+<p>（5）执行nmake test</p>
+<p><img src="https://img-blog.csdnimg.cn/20200804200058695.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NDE1NjE1,size_16,color_FFFFFF,t_70" alt="img"></p>
+<p> 执行完所有用例结果如下，会有一个pass</p>
+<p><img src="https://img-blog.csdnimg.cn/20200805103605200.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NDE1NjE1,size_16,color_FFFFFF,t_70" alt="img"></p>
+<p>（6）执行nmake install</p>
+<p><img src="https://img-blog.csdnimg.cn/20200805103807402.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NDE1NjE1,size_16,color_FFFFFF,t_70" alt="img"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200805110120476.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NDE1NjE1,size_16,color_FFFFFF,t_70" alt="img"></p>
+<p>等待执行完成以后，路径下会自动生成这几个文件夹</p>
+<p><img src="https://img-blog.csdnimg.cn/20200805104012335.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3NDE1NjE1,size_16,color_FFFFFF,t_70" alt="img"></p>
+<p>至此，编译基本完成，release版本相同操作，只是配置参数不同，如果要编译静态库也是配置参数就行，编译步骤不变 </p>
+<h2 id="四、一些问题："><a href="#四、一些问题：" class="headerlink" title="四、一些问题："></a>四、一些问题：</h2><p>（1）Failure! build file wasn’t produced. Please read INSTALL and  associated NOTES files. You may also have to look over your available  compiler tool chain or change your configuration. NASM not found - make  sure it’s installed and available on %PATH%</p>
+<p>解决：安装默认路径，手动添加环境变量，重启</p>
+<p>（2）It looks like you don’t have either nmake.exe or dmake.exe on your PATH, so you will not be able to execute the commands from a Makefile.  You can install dmake.exe with the Perl Package Manager by running: ppm  install dmake</p>
+<p>解决：使用附件中的Dmake，配置环境变量，重启；或者前边的所有编译软件默认路径安装，添加环境变量，应该不会报这个错，VS不要默认路径</p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
     
-    <a class="pull-left" href="/2021/01/12/%E8%AE%B0%E5%BD%95vs2019%E7%BC%96%E8%AF%91openssl1.1.1i.tar.zip/" style="float: left;">
+    <a class="pull-left" href="/2021/12/31/%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95Android%20APP/" style="float: left;">
         ← 
     </a>
     
     
-    <a class="pull-right" href="/2020/11/07/%E8%AE%B0%E5%BD%95android%E5%BC%80%E5%8F%91/">
+    <a class="pull-right" href="/2020/12/04/Android%20%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84AOP%E6%8A%80%E6%9C%AF/">
          →
     </a>
     
