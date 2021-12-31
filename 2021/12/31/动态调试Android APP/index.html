@@ -182,15 +182,20 @@
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<p>最近研究Xposed,自然而然需要研究一下动态调试技术,特将实验通过的方法记录如下:</p>
-<p>准备步骤<br>一部ROOT过的Android手机,打开开发者模式<br>安装Xposed(官方网站,安装后需要授权ROOT)<br>安装Xposed插件XDebuggable或BDOpener(这个Xposed搜索不到需要点击这里下载),并激活。<br>下载IntelliJ IDEA,并激活（激活问题请自行百度或参照Pycharm篇）<br>安装smalidea插件。点击这里了解如何安装。<br>反编译APK(apktool)<br>点击这里 下载最新的apktool。并设置到terminal的配置中(mac与Win不尽相同,更详细的操作参见官方文档)</p>
+      		<h1 id="Android-动态调试app"><a href="#Android-动态调试app" class="headerlink" title="Android 动态调试app"></a>Android 动态调试app</h1><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近研究Xposed,自然而然需要研究一下动态调试技术,特将实验通过的方法记录如下:</p>
+<h3 id="准备步骤"><a href="#准备步骤" class="headerlink" title="准备步骤"></a>准备步骤</h3><p>一部<code>ROOT</code>过的<code>Android</code>手机,打开开发者模式<br>安装<code>Xposed</code>(安装后需要授权ROOT)<br>安装<code>Xposed</code>插件<code>XDebuggable</code>或<code>BDOpener</code>(这个Xposed搜索不到需要点击<a target="_blank" rel="noopener" href="https://security.tencent.com/index.php/opensource/detail/17">[这里]</a>下载),并激活。<br>下载<code>IntelliJ IDEA</code>,并激活（激活问题请自行百度或参照Pycharm篇）<br>安装<code>smalidea</code>插件。点击<a target="_blank" rel="noopener" href="https://github.com/JesusFreke/smalidea">这里</a>了解如何安装。</p>
+<h3 id="反编译APK-apktool"><a href="#反编译APK-apktool" class="headerlink" title="反编译APK(apktool)"></a>反编译APK(apktool)</h3><p>点击<a target="_blank" rel="noopener" href="https://ibotpeaches.github.io/Apktool/">这里</a>下载最新的<code>apktool</code>。并设置到terminal的配置中(mac与Win不尽相同,更详细的操作参见<a target="_blank" rel="noopener" href="https://ibotpeaches.github.io/Apktool/install/">官方文档</a>)</p>
 <p>下载要反编译的.apk文件后,执行</p>
-<p>apktool d pathToFile.apk</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apktool d pathToFile.apk</span><br></pre></td></tr></table></figure>
+
 <p>会反编译出整个apk的smali项目文件。</p>
-<p>设置Android Remote Debug<br>打开IntelliJ IDEA<br>Open反编译后的项目<br>点击右上角的Edit Configurations…<br>出现的对话框中点击+,选择Remote<br>修改port为8700<br>点击OK<br>动态调试<br>将Android手机插入电脑<br>打开需要动态调试的APP<br>点击IntelliJ IDEA右上角的Attach debuger to Android Process<br>选择对应的进程,并在smali代码中打入断点<br>手动进入对应功能,即进入断点动态调试<br>补充<br>辅助命令<br>为了快速定位类名可使用：</p>
-<p>adb shell dumpsys activity top</p>
+<h3 id="设置Android-Remote-Debug"><a href="#设置Android-Remote-Debug" class="headerlink" title="设置Android Remote Debug"></a>设置Android Remote Debug</h3><p>打开<code>IntelliJ IDEA</code><br>Open反编译后的项目<br>点击右上角的<code>Edit Configurations...</code><br>出现的对话框中点击<code>+</code>,选择<code>Remote</code><br>修改<code>port</code>为<code>8700</code><br>点击<code>OK</code></p>
+<h3 id="动态调试"><a href="#动态调试" class="headerlink" title="动态调试"></a>动态调试</h3><p>将Android手机插入电脑<br>打开需要动态调试的APP<br>点击<code>IntelliJ IDEA</code>右上角的<code>Attach debuger to Android Process</code><br>选择对应的进程,并在smali代码中打入断点<br>手动进入对应功能,即进入断点动态调试</p>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><h4 id="辅助命令"><a href="#辅助命令" class="headerlink" title="辅助命令"></a>辅助命令</h4><p>为了快速定位类名可使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell dumpsys activity top</span><br></pre></td></tr></table></figure>
+
 <p>来获取当前Activity信息</p>
-<p>运行信息<br>macOS High Sierra 10.13.3<br>Xposed Version89<br>BDOpener 1.0<br>IntelliJ IDEA 2017.3<br>smalidea 0.0.5<br>apktool 2.3.1</p>
+<h4 id="运行信息"><a href="#运行信息" class="headerlink" title="运行信息"></a>运行信息</h4><p><code>macOS High Sierra 10.13.3</code><br><code>Xposed Version89</code><br><code>BDOpener 1.0</code><br><code>IntelliJ IDEA 2017.3</code><br><code>smalidea 0.0.5</code><br><code>apktool 2.3.1</code></p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
